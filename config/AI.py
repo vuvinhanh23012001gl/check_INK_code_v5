@@ -1,0 +1,24 @@
+from dataclasses import dataclass
+from config.path_file import PATH_FILE_UNET_DETECT,PATH_FOLDER_PATCHCORE_ABNORMAL_DETECT
+
+@dataclass
+class Unet:
+    path:str = PATH_FILE_UNET_DETECT
+    threshold: float = 0.5
+    encoder: str = "resnet34"
+    encoder_weights :str ="imagenet"
+    type_model:str="detect_egde"
+    in_channels:int= 3
+    classes:int= 1
+    activation= None
+    img_size: int = 512
+    kernel: int = 7
+    min_area: int = 1000
+    epsilon_ratio: float = 0.0017
+
+
+@dataclass
+class PatchCore:
+    path:str = PATH_FOLDER_PATCHCORE_ABNORMAL_DETECT    # cAI
+
+
