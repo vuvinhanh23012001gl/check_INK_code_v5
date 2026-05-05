@@ -1,6 +1,6 @@
 
 
-from config.AI import Unet
+from config import UnetConfig
 import torch
 import gc
 import segmentation_models_pytorch as smp
@@ -13,7 +13,7 @@ import cv2
 # Model này tính  nhận diện Unet++
 
 class ModelUnet(BaseAI):
-    def __init__(self,config:Unet = None):
+    def __init__(self,config:UnetConfig = None):
         self.config = config
         self.device =  None
         self.model = None

@@ -1,8 +1,8 @@
 from dataclasses import dataclass
-from config.path_file import PATH_FILE_UNET_DETECT,PATH_FOLDER_PATCHCORE_ABNORMAL_DETECT
+from config.path_file_config import PATH_FILE_UNET_DETECT,PATH_FOLDER_PATCHCORE_ABNORMAL_DETECT
 
 @dataclass
-class Unet:
+class UnetConfig:
     path:str = PATH_FILE_UNET_DETECT
     threshold: float = 0.5
     encoder: str = "resnet34"
@@ -18,7 +18,8 @@ class Unet:
 
 
 @dataclass
-class PatchCore:
+class PatchCoreConfig:
     path:str = PATH_FOLDER_PATCHCORE_ABNORMAL_DETECT    # cAI
+    
 
 

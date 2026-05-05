@@ -30,7 +30,8 @@ def main():
         ws_ping_interval=None
     )
 if __name__ == "__main__":
-    main()
+    import pipeline.one_product
+    # main()
 
 
 
