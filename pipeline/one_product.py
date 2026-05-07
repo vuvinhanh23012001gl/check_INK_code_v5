@@ -1,10 +1,9 @@
 
 from core.context.run_one_product import RunOneProduct as CtxOneProduct
 from .macro import Macro as PipelineMacro
-from models.frame import Frame
+from models import Frame
 from handler.frame_unet_convert_IAI import FrameUnetConvertIAI
-from services.vision.detect.egde.unet_plus.mask_and_polygon import Mask as MaskUnet
-from services.vision.detect.egde.unet_plus.model import  ModelUnet
+from services import ModelUnet,MaskUnet
 from config import UnetConfig
 import time
 import queue

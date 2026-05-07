@@ -1,7 +1,7 @@
 
-from services.vision.detect.egde.unet_plus.mask_and_polygon import Mask as model_unet
+from services import ModelUnet
 class  Macro():
-    def __init__(self,model:model_unet):
+    def __init__(self,model:ModelUnet):
         self.model = model
 
     def handler(self,img):

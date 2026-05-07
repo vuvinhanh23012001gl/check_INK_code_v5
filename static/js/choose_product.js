@@ -10,8 +10,8 @@ choose_product.addEventListener("click",async function(){
     console.log("Bạn vừa nhấn chọn sản phẩm");
     overlay_choose_product.style.display = "flex";
     container.innerHTML = "";
-    // let data =  await fetchGet("/product/get_inf_product");
-    // console.log("data",data);
+    let data =  await fetchGet("/product/get_inf_product");
+    console.log("data",data);
     // let arr_product = data?.data;
     // let select_product = data?.current_option;
     // console.log("arr",arr_product,"select",select_product);

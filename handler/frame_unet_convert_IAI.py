@@ -2,7 +2,7 @@
 from typing import Optional,Tuple
 import numpy as np
 import copy 
-from models.machine import Machine
+from models import Machine
 import cv2
 
 

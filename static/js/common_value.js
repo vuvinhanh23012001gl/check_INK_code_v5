@@ -254,6 +254,7 @@ export async function fetchGet(url) {
     }
 }
 
+
 export async function fetchGetSendData(url, data = {}) {
     try {
         // Chuyển object data thành query string: {id:1,name:"A"} => ?id=1&name=A
