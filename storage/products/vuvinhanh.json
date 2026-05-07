@@ -1,0 +1,10 @@
+{
+    "P05": {
+        "id": "P05",
+        "name": "kẹo dâu",
+        "description": "kẹo vị dâu",
+        "created_at": "2026-05-07 15:49:58",
+        "updated_at": "2026-05-07 15:49:58",
+        "path_img_product": "P05\\P05.jpg"
+    }
+}

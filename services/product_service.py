@@ -22,6 +22,10 @@ class ProductService:
         self.dict_products_obj = (
             self.repository.load()
         )
+
+
+
+
     def now_str(self):
         return datetime.now().strftime(
             "%Y-%m-%d %H:%M:%S"
@@ -32,7 +36,7 @@ class ProductService:
         product: Product
     ):
         path_product = (
-            self.repository.product_base.path_base
+            self.repository.product_base
             / str(product.id)
         )  
         File.create_folder(path_product)
@@ -105,7 +109,6 @@ class ProductService:
             return Result.Fail(
                 ErrorCode.PRODUCT_DOSE_NOT_EXIST
             )
-
         # giữ nguyên created_at
         old_product = (
             self.dict_products_obj[
@@ -116,7 +119,6 @@ class ProductService:
         product.created_at = (
             old_product.created_at
         )
-
         # update time
         product.updated_at = self.now_str()
 
@@ -145,7 +147,7 @@ class ProductService:
 
         # path folder product
         path_product = (
-            self.repository.product_base.path_base
+            self.repository.product_base
             / str(product_id)
         )
 
@@ -183,7 +185,6 @@ class ProductService:
             self.dict_products_obj.values()
         )
 
-
     def exists_product(
         self,
         product_id: str
@@ -207,60 +208,30 @@ class ProductService:
         )
     
 
-    def save_image_product(
-        self,
-        product: Product,
-        image
-    ):
-
+    def save_image_product(self, product: Product, image):
         folder_product = (
-            self.repository.product_base.path_base
+            self.repository.product_base
             / str(product.id)
         )
-
         File.create_folder(folder_product)
-
-        path_image = (
-            folder_product
-            / f"{product.id}.jpg"
-        )
-
-        cv2.imwrite(
-            str(path_image),
-            image
-        )
-
-        # lưu path vào object
+        path_image = folder_product / f"{product.id}.jpg"
+        cv2.imwrite(str(path_image), image)
         product.path_img_product = str(
-            path_image
+            path_image.relative_to(self.repository.product_base)
         )
-
-        # update dict
-        self.dict_products_obj[
-            str(product.id)
-        ] = product
-
+        self.dict_products_obj[str(product.id)] = product
         return path_image
 
 
-
 # from models import Product
-# from path_structure import ProductPathData
 # from responsibility import ProductRepository
-# from services import ProductService
-
 # import numpy as np
-
+# from config.product_config import ProductConfig
 
 # def test_product_service():
 
-#     # init
-#     product_path = ProductPathData(
-#         path_base="data/products"
-#     )
-
 #     repository = ProductRepository(
-#         product_path
+#         ProductConfig.path,"vuvinhanh.json"
 #     )
 
 #     service = ProductService(
@@ -293,64 +264,64 @@ class ProductService:
 #         result.message()
 #     )
 
-#     # get
-#     product_get = service.get_product(
-#         "P05"
-#     )
+    # # get
+    # product_get = service.get_product(
+    #     "P05"
+    # )
 
-#     print(
-#         "GET:",
-#         product_get
-#     )
+    # print(
+    #     "GET:",
+    #     product_get
+    # )
 
-#     # update
-#     product_update = Product(
-#         id="P05",
-#         name="kẹo cam",
-#         description="kẹo vị cam"
-#     )
+    # # update
+    # product_update = Product(
+    #     id="P05",
+    #     name="kẹo cam",
+    #     description="kẹo vị cam"
+    # )
 
-#     result = service.update_product(
-#         product_update
-#     )
+    # result = service.update_product(
+    #     product_update
+    # )
 
-#     print(
-#         "UPDATE:",
-#         result.message()
-#     )
+    # print(
+    #     "UPDATE:",
+    #     result.message()
+    # )
 
-#     # exists
-#     print(
-#         "EXISTS:",
-#         service.exists_product("P05")
-#     )
+    # # exists
+    # print(
+    #     "EXISTS:",
+    #     service.exists_product("P05")
+    # )
 
-#     # count
-#     print(
-#         "COUNT:",
-#         service.count_products()
-#     )
+    # # count
+    # print(
+    #     "COUNT:",
+    #     service.count_products()
+    # )
 
-#     # all products
-#     print(
-#         "ALL:",
-#         service.get_all_products()
-#     )
+    # # all products
+    # print(
+    #     "ALL:",
+    #     service.get_all_products()
+    # )
 
-#     # remove
-#     result = service.remove_product(
-#         "P05"
-#     )
+    # # remove
+    # result = service.remove_product(
+    #     "P05"
+    # )
 
-#     print(
-#         "REMOVE:",
-#         result.message()
-#     )
+    # print(
+    #     "REMOVE:",
+    #     result.message()
+    # )
 
-#     print(
-#         "EXISTS AFTER REMOVE:",
-#         service.exists_product("P05")
-#     )
+    # print(
+    #     "EXISTS AFTER REMOVE:",
+    #     service.exists_product("P05")
+    # )
 
 
 # if __name__ == "__main__":

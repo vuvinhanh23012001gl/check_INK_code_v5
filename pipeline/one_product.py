@@ -10,6 +10,7 @@ import queue
 import threading
 import cv2 
 
+
 task_queue = queue.Queue()
 def producer():
     print("Đã vào luồng này")
@@ -27,6 +28,7 @@ def producer():
         print("push vao queue")
         task_queue.put(task)
         time.sleep(0.5)
+
 
 
 class PipelineOneProduct():
@@ -64,6 +66,9 @@ class PipelineOneProduct():
         model_unet = ModelUnet(config)
         modler_mask = MaskUnet(model_unet)
         self.handler_macro = PipelineMacro(modler_mask)
+
+
+        
         # Gia du lieu
         # self.macro_pipeline.handler()
         

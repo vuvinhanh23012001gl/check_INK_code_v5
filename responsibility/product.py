@@ -1,20 +1,24 @@
 
 from models import Product
 from utills import File
-from path_structure import ProductPathData
-
+from pathlib import Path
 
 class ProductRepository:
+    
+    def __init__(self, product_base:str,name_file_product:str):
+        
+        self.product_base = Path(product_base)
+        self.name_file_products =  name_file_product
 
-    def __init__(self, product_base : ProductPathData):
-        self.product_base =  product_base
 
     @property
     def file_path(self):
         """
         đường dẫn file products.json
         """
-        return self.product_base.path_file_products
+        return self.product_base / self.name_file_products 
+
+
 
     def load(self) -> dict[str, Product]:
         """

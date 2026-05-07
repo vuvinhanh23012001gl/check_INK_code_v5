@@ -30,9 +30,11 @@ def main():
         ws_ping_interval=None
     )
 if __name__ == "__main__":
-    # import pipeline.one_product
+    import pipeline.one_product
     container_obj = create_container()
     main()
+
+
 
 
 

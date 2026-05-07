@@ -12,7 +12,7 @@ class Machine:
         
         self.height_of_the_inspection_area_px  = 0 #  chiều cao khung đang xet 
         self.width_of_the_inspection_area_px  = 0 #  chiều ngang khung đang xet 
-
+        
     def calculate_width_height_total_frame(self) -> Tuple:
         """
         Input: org_coordinate, max_coordinate, h_ratio, v_ratio
